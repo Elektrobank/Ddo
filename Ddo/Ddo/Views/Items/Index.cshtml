@@ -1,0 +1,108 @@
+﻿@model Ddo.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<div class="form-group">
+    <div id="topButtons">
+        <div class="btn-toolbar">
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus"></span><span class="strong">&nbsp;&nbsp;Add Item</span>
+            </button>
+            <button type="button" class="pull-right btn btn-info" onclick="Update(1, 'Jam of Jamming')">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            <button type="button" class="pull-right btn btn-default">
+                <span class="fas fa-file-excel">&nbsp;&nbsp;Export</span>
+            </button>
+        </div>
+    </div>
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="min-width: 155px" colspan="2">Actions</th>
+                <th class="thMed">Description</th>
+                <th class="thMed">Min Level</th>
+                <th class="thMed">Bound To</th>
+                <th class="thMed">Category 1</th>
+                <th class="thMed">Category 2</th>
+                <th class="thMed">Character</th>
+                <th class="thMed">Quantity</th>
+                <th class="thMed">Location</th>
+                <th class="thMed">Destiny</th>
+                <th style="min-width: 300px">Notes</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="checkbox" class="form-check-input pull-left" onclick="toggleCheck(this)" />
+                    <button type="button" class="btn btn-default btn-s pull-right">
+                        <span class="glyphicon glyphicon-refresh"></span>
+                    </button>
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" contenteditable="true" id="searchDescription" onkeyup="filterSearch(id, 2)" placeholder="Search Description" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="number" id="Search Min Level" onkeyup="filterSearch(id, 3)" placeholder="Search Min Level" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Bound To" onkeyup="filterSearch(id, 4)" placeholder="Search Bound To" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Category 1" onkeyup="filterSearch(id, 5)" placeholder="Search Category 1" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Category 2" onkeyup="filterSearch(id, 6)" placeholder="Search Category 2" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Character" onkeyup="filterSearch(id, 7)" placeholder="Search Character" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="number" id="Search Quantity" onkeyup="filterSearch(id, 8)" placeholder="Search Quantity" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Location" onkeyup="filterSearch(id, 9)" placeholder="Search Location" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Destiny" onkeyup="filterSearch(id, 10)" placeholder="Search Destiny" />
+                </td>
+                <td>
+                    <input class="form-control columnSearchbox" type="search" id="Search Notes" onkeyup="filterSearch(id, 11)" placeholder="Search Notes" />
+                </td>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            @foreach (var item in Model.ItemList)
+            {
+                <tr>
+                    <td class="tableData">
+                        <input type="checkbox" name="myCheckbox" class="form-check-input" />
+                    </td>
+                    <td class="tableData" style="min-width: 155px">
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit
+                        </button>
+                        <button type="button" class="btn btn-default">
+                            More
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </button>
+                    </td>
+                    <td>@item.ItemFullDesc</td>
+                    <td>@item.MinLevel</td>
+                    <td>@item.BoundTo</td>
+                    <td>@item.Category1</td>
+                    <td>@item.Category2</td>
+                    <td>@item.Character</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Location</td>
+                    <td>@item.Destiny</td>
+                    <td>@item.Notes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
